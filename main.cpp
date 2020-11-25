@@ -4,6 +4,8 @@
 #include <vector>
 #include <string>
 
+#define INPUT_IP 0
+
 int main() {
     // Holds information about who we're going to be talking to.
     // One object will be filled with information, the other is a pointer returned by the library
@@ -34,11 +36,16 @@ int main() {
     request_strings.emplace_back("system.sysORLastChange");
     request_strings.emplace_back("ip.ipForwarding");
     request_strings.emplace_back("ip.ipDefaultTTL");
-    request_strings.emplace_back("ip.ipAddrTable");
+    request_strings.emplace_back("ipAddrTable");
+    request_strings.emplace_back("host.hrStorage");
+    request_strings.emplace_back("HostResources");
 
+#if INPUT_IP == 1
     std::cout << "Input target IP:";
     std::cin >> ip;
-
+#else
+    ip = "10.10.30.254";
+#endif
     // initialize SNMP library
     init_snmp("snmpapp");
 
@@ -58,14 +65,11 @@ int main() {
     session.community = (u_char *) "public";
     session.community_len = strlen(reinterpret_cast<const char *>(session.community));
 
-    // Open the session
-    SOCK_STARTUP;
     // Establish the session
     ss = snmp_open(&session);
 
     if (!ss) {
         snmp_sess_perror("ack", &session);
-        SOCK_CLEANUP;
         exit(1);
     }
     for (int i = 0; i < request_strings.size(); ++i) {
@@ -76,7 +80,6 @@ int main() {
 
         if (!snmp_parse_oid(request_strings.at(i), anOID, &anOID_len)) {
             snmp_perror(request_strings.at(i));
-            SOCK_CLEANUP;
             exit(1);
         }
 
