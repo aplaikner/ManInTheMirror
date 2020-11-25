@@ -87,7 +87,7 @@ int main() {
 
         if (!snmp_parse_oid(request_strings.at(i), anOID, &anOID_len)) {
             snmp_perror(request_strings.at(i));
-            exit(1);
+            //exit(1);
         }
 
         snmp_add_null_var(pdu, anOID, anOID_len);
