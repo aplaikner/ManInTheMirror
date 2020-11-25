@@ -4,8 +4,8 @@
 #include <vector>
 #include <string>
 
-#define INPUT_IP 0
-#define DEVELOPMENT_INFORMATION 0
+#define INPUT_IP 1
+#define DEVELOPMENT_INFORMATION 1
 
 int main() {
 #if DEVELOPMENT_INFORMATION == 1
