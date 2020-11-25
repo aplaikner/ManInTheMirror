@@ -5,8 +5,15 @@
 #include <string>
 
 #define INPUT_IP 0
+#define DEVELOPMENT_INFORMATION 0
 
 int main() {
+#if DEVELOPMENT_INFORMATION == 1
+    std::cout << "WORK IN PROGRESS - DOES NOT REPRESENT THE FINAL PRODUCT" << std::endl;
+    std::cout << "Functionality: Get predefined set of information from client running an SNMP agent" << std::endl;
+    std::cout << "Tested with SN-NAS\n" << std::endl;
+#endif
+
     // Holds information about who we're going to be talking to.
     // One object will be filled with information, the other is a pointer returned by the library
     struct snmp_session session, *ss;
