@@ -3,7 +3,7 @@
 #include <net-snmp/net-snmp-includes.h>
 #include <vector>
 #include <string>
-#include "Timer.h"
+#include "Benchmarking/Timer.h"
 
 #define INPUT_IP 1
 #define DEVELOPMENT_INFORMATION 1
