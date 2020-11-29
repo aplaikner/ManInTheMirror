@@ -3,4 +3,4 @@ project(ManInTheMirror)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(ManInTheMirror main.cpp Benchmarking/Timer.cpp Benchmarking/Timer.h)
+add_executable(ManInTheMirror main.cpp Benchmarking/Timer.cpp Benchmarking/Timer.h Session.h Session.cpp Scanner.h Scanner.cpp)

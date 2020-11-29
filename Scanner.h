@@ -1,0 +1,11 @@
+
+#ifndef MANINTHEMIRROR_SCANNER_H
+#define MANINTHEMIRROR_SCANNER_H
+
+
+class Scanner {
+
+};
+
+
+#endif //MANINTHEMIRROR_SCANNER_H
