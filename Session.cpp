@@ -2,11 +2,14 @@
 #include "Session.h"
 #include <iostream>
 
-Session::Session(char *host, std::vector<const char*> oids):request_strings(oids) {
-    ip = host;
+Session::Session(char *host, std::vector<const char *> oids) : request_strings(oids), ip(host) {
 
-    // initialize SNMP library
-    init_snmp("snmpapp");
+}
+
+
+void Session::start_session() {
+
+
 
     /*
      * Initialize a "session" that defines who we're going to talk to
