@@ -15,7 +15,6 @@ Scanner::Scanner() {
     oids.emplace_back("system.sysLocation");
     oids.emplace_back("ip.ipForwarding");
     oids.emplace_back("ip.ipDefaultTTL");
-    oids.emplace_back("ipAddrTable");
     oids.emplace_back("host.hrStorage");
     oids.emplace_back("HostResources");
 
@@ -28,11 +27,9 @@ Scanner::Scanner() {
 
 void Scanner::scan() {
     std::vector<Session> sessions;
-    std::vector<std::future<void>> f;
     for (auto host : hosts) {
         sessions.emplace_back(Session(host, oids));
     }
-    f.reserve(sessions.size());
     for (auto session : sessions) {
         std::thread t(&Session::start_session, &session);
         t.join();

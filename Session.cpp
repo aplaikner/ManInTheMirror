@@ -29,6 +29,8 @@ void Session::start_session() {
 
     // Establish the session
     ss = snmp_open(&session);
+    ss->timeout = 100000;
+    //ss->retries = 3;
 
     if (!ss) {
         snmp_sess_perror("ack", &session);
@@ -55,10 +57,10 @@ void Session::start_session() {
             // SUCCESS: Print the result variables
 
             for (vars = response->variables; vars; vars = vars->next_variable) {
+                // Mutex? If data is later on stored in vector anyway then Mutex is a must
+                std::cout << ip << ":";
                 print_variable(vars->name, vars->name_length, vars);
             }
-
-
         } else {
             // FAILURE: print what went wrong!
             if (status == STAT_SUCCESS) {

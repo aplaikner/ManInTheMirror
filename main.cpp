@@ -6,6 +6,7 @@
 #include "Benchmarking/Timer.h"
 #include "Scanner.h"
 #include "Session.h"
+#include "Utility/IPRangeCalculator.h"
 
 #define INPUT_IP 1
 #define DEVELOPMENT_INFORMATION 1
@@ -16,20 +17,13 @@ int main() {
     std::cout << "Functionality: Get predefined set of information from client running an SNMP agent" << std::endl;
     std::cout << "Tested with SN-NAS\n" << std::endl;
 #endif
-    Scanner s;
-    s.scan();
-/*
-    std::vector<const char *> request_strings;
-    request_strings.emplace_back("system.sysDescr");
-    request_strings.emplace_back("system.sysObjectID");
-    request_strings.emplace_back("system.sysUpTime");
-    request_strings.emplace_back("system.sysContact");
-    request_strings.emplace_back("system.sysName");
+    {
+        Timer t;
+        std::vector<std::string> a = IPRangeCalculator::calculate_ips(192, 168, 15, 1, 24);
+        for (auto ip : a) {
+            std::cout << ip << std::endl;
+        }
+    }
 
-    Session s((char *) "10.10.30.254", request_strings);
-*/
-
-    std::string oof;
-    std::cin >> oof;
     return 0;
 }
