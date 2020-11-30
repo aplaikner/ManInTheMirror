@@ -33,15 +33,15 @@ void Scanner::scan() {
     for (auto host : hosts) {
         sessions.emplace_back(Session(host, oids));
     }
+    threads.reserve(sessions.size());
     for (auto session : sessions) {
-        std::thread t(&Session::start_session, &session);
-        t.join();
-
-        //threads.emplace_back(std::thread(&Session::start_session, &session));
+        //std::thread t(&Session::start_session, &session);
+        //t.join();
+        threads.emplace_back(std::thread(&Session::start_session, &session));
     }
-    /*
+
     for (auto &t : threads) {
         t.join();
     }
-     */
+
 }

@@ -26,16 +26,16 @@ void Session::start_session() {
     // set SNMPv1 community name used for authentication
     session.community = (u_char *) "public";
     session.community_len = strlen(reinterpret_cast<const char *>(session.community));
-
+    //snmp_set_do_debugging(1);
     // Establish the session
     ss = snmp_open(&session);
 
     //1000000 vs 100000
-    ss->timeout = 200000;
+    //ss->timeout = 200000;
     //ss->retries = 3;
 
     if (!ss) {
-        snmp_sess_perror("ack", &session);
+        snmp_sess_perror("Session not created", &session);
         exit(1);
     }
     for (int i = 0; i < request_strings.size(); ++i) {
@@ -80,5 +80,4 @@ void Session::start_session() {
     // Final clean up:
     // 2) close the session
     snmp_close(ss);
-
 }
