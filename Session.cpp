@@ -6,6 +6,7 @@ Session::Session(std::string host, std::vector<const char *> oids) : request_str
 
 }
 
+static std::mutex mlock;
 
 void Session::start_session() {
 
@@ -51,9 +52,11 @@ void Session::start_session() {
 
         snmp_add_null_var(pdu, anOID, anOID_len);
 
+        mlock.lock();
         // Send the request out
+        //status = snmp_synch_response(ss, pdu, &response);
         status = snmp_synch_response(ss, pdu, &response);
-
+        mlock.unlock();
         // Process the response
         if (status == STAT_SUCCESS && response->errstat == SNMP_ERR_NOERROR) {
             // SUCCESS: Print the result variables
@@ -68,7 +71,7 @@ void Session::start_session() {
             if (status == STAT_SUCCESS) {
                 std::cerr << "Error in packet\nReason: " << snmp_errstring(response->errstat) << std::endl;
             } else {
-                snmp_sess_perror("snmpget", ss);
+                snmp_sess_perror("Error with response", ss);
             }
         }
         // Clean up:
