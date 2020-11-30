@@ -30,17 +30,17 @@ Scanner::Scanner() {
 void Scanner::scan() {
     std::vector<std::thread> threads;
     std::vector<Session> sessions;
-    for (auto host : hosts) {
+    for (const auto& host : hosts) {
         sessions.emplace_back(Session(host, oids));
     }
     threads.reserve(sessions.size());
-    for (auto session : sessions) {
-        session.start_session();
-        //threads.emplace_back(std::thread(&Session::start_session, &session));
+    for (const auto& session : sessions) {
+        //session.start_session();
+        threads.emplace_back(std::thread(&Session::start_session, session));
     }
-/*
+
     for (auto &t : threads) {
         t.join();
     }
-*/
+
 }
