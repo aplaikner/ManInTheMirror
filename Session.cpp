@@ -31,7 +31,7 @@ void Session::start_session() {
     ss = snmp_open(&session);
 
     //1000000 vs 100000
-    //ss->timeout = 200000;
+    ss->timeout = 200000;
     //ss->retries = 3;
 
     if (!ss) {

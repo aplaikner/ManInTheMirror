@@ -35,13 +35,12 @@ void Scanner::scan() {
     }
     threads.reserve(sessions.size());
     for (auto session : sessions) {
-        //std::thread t(&Session::start_session, &session);
-        //t.join();
-        threads.emplace_back(std::thread(&Session::start_session, &session));
+        session.start_session();
+        //threads.emplace_back(std::thread(&Session::start_session, &session));
     }
-
+/*
     for (auto &t : threads) {
         t.join();
     }
-
+*/
 }
