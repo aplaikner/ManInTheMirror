@@ -6,6 +6,7 @@
 #include <net-snmp/net-snmp-includes.h>
 #include <vector>
 #include <mutex>
+#include <thread>
 
 class Session {
     // Holds information about who we're going to be talking to.
@@ -27,12 +28,12 @@ class Session {
     int status;
 
     // Points to IP of Client
-    char *ip;
+    std::string ip;
 
     // Vector with OIDs
     std::vector<const char *> request_strings;
 public:
-    Session(char *host, std::vector<const char*> oids);
+    Session(std::string host, std::vector<const char*> oids);
     void start_session();
 
 };

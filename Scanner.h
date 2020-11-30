@@ -3,10 +3,11 @@
 #define MANINTHEMIRROR_SCANNER_H
 
 #include <vector>
+#include <string>
 
 class Scanner {
     std::vector<const char *> oids;
-    std::vector<char *> hosts;
+    std::vector<std::string> hosts;
 
 public:
     Scanner();

@@ -2,14 +2,12 @@
 #include "Session.h"
 #include <iostream>
 
-Session::Session(char *host, std::vector<const char *> oids) : request_strings(oids), ip(host) {
+Session::Session(std::string host, std::vector<const char *> oids) : request_strings(oids), ip(host) {
 
 }
 
 
 void Session::start_session() {
-
-
 
     /*
      * Initialize a "session" that defines who we're going to talk to
@@ -17,7 +15,9 @@ void Session::start_session() {
 
     // set up defaults
     snmp_sess_init(&session);
-    session.peername = ip;
+
+
+    session.peername = (char *) ip.c_str();
 
 
     // set SNMP version number
@@ -29,7 +29,9 @@ void Session::start_session() {
 
     // Establish the session
     ss = snmp_open(&session);
-    ss->timeout = 100000;
+
+    //1000000 vs 100000
+    ss->timeout = 200000;
     //ss->retries = 3;
 
     if (!ss) {
@@ -78,4 +80,5 @@ void Session::start_session() {
     // Final clean up:
     // 2) close the session
     snmp_close(ss);
+
 }

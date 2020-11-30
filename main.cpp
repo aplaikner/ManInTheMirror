@@ -19,10 +19,8 @@ int main() {
 #endif
     {
         Timer t;
-        std::vector<std::string> a = IPRangeCalculator::calculate_ips(192, 168, 15, 1, 24);
-        for (auto ip : a) {
-            std::cout << ip << std::endl;
-        }
+        Scanner s;
+        s.scan();
     }
 
     return 0;
