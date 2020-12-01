@@ -11,10 +11,10 @@ Scanner::Scanner() {
     init_snmp("snmpapp");
     oids.emplace_back("system.sysDescr");
     //oids.emplace_back("system.sysObjectID");
-    //oids.emplace_back("system.sysUpTime");
+    oids.emplace_back("system.sysUpTime");
     //oids.emplace_back("system.sysContact");
     //oids.emplace_back("system.sysName");
-    //oids.emplace_back("system.sysLocation");
+    oids.emplace_back("system.sysLocation");
     //oids.emplace_back("ip.ipForwarding");
     //oids.emplace_back("ip.ipDefaultTTL");
     //oids.emplace_back("host.hrStorage");
@@ -22,6 +22,7 @@ Scanner::Scanner() {
     oids.emplace_back("ipAddrTable");
 
     hosts = IPRangeCalculator::calculate_ips(10, 10, 30, 0, 24);
+    // hosts.emplace_back("10.10.30.1");
     hosts.erase(hosts.begin());
     hosts.erase(hosts.end());
 
@@ -30,11 +31,11 @@ Scanner::Scanner() {
 void Scanner::scan() {
     std::vector<std::thread> threads;
     std::vector<Session> sessions;
-    for (const auto& host : hosts) {
+    for (const auto &host : hosts) {
         sessions.emplace_back(Session(host, oids));
     }
     threads.reserve(sessions.size());
-    for (const auto& session : sessions) {
+    for (const auto &session : sessions) {
         //session.start_session();
         threads.emplace_back(std::thread(&Session::start_session, session));
     }

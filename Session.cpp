@@ -6,7 +6,7 @@ Session::Session(std::string host, std::vector<const char *> oids) : request_str
 
 }
 
-static std::mutex mlock;
+//static std::mutex mlock;
 
 void Session::start_session() {
 
@@ -27,12 +27,13 @@ void Session::start_session() {
     // set SNMPv1 community name used for authentication
     session.community = (u_char *) "public";
     session.community_len = strlen(reinterpret_cast<const char *>(session.community));
+    session.timeout = 200000;
     //snmp_set_do_debugging(1);
     // Establish the session
-    ss = snmp_open(&session);
+    ss = snmp_sess_open(&session);
 
     //1000000 vs 100000
-    ss->timeout = 200000;
+    //ss->timeout = 200000;
     //ss->retries = 3;
 
     if (!ss) {
@@ -52,26 +53,30 @@ void Session::start_session() {
 
         snmp_add_null_var(pdu, anOID, anOID_len);
 
-        mlock.lock();
+        // mlock.lock();
         // Send the request out
         //status = snmp_synch_response(ss, pdu, &response);
-        status = snmp_synch_response(ss, pdu, &response);
-        mlock.unlock();
+        status = snmp_sess_synch_response(ss, pdu, &response);
+        // mlock.unlock();
         // Process the response
-        if (status == STAT_SUCCESS && response->errstat == SNMP_ERR_NOERROR) {
+        if (status == STAT_SUCCESS && nullptr != response) {
             // SUCCESS: Print the result variables
 
             for (vars = response->variables; vars; vars = vars->next_variable) {
                 // Mutex? If data is later on stored in vector anyway then Mutex is a must
-                std::cout << ip << ":";
-                print_variable(vars->name, vars->name_length, vars);
+                //std::cout << ip << ":";
+                //print_variable(vars->name, vars->name_length, vars);
+                char buf[1024];
+                snprint_variable(buf, sizeof(buf), vars->name, vars->name_length, vars);
+                fprintf(stdout, "%s: %s\n", ip.c_str(), buf);
             }
         } else {
             // FAILURE: print what went wrong!
             if (status == STAT_SUCCESS) {
                 std::cerr << "Error in packet\nReason: " << snmp_errstring(response->errstat) << std::endl;
             } else {
-                snmp_sess_perror("Error with response", ss);
+                //std::cout << ip << ("Error with response") << std::endl;
+
             }
         }
         // Clean up:
@@ -82,5 +87,5 @@ void Session::start_session() {
     }
     // Final clean up:
     // 2) close the session
-    snmp_close(ss);
+    snmp_sess_close(ss);
 }
