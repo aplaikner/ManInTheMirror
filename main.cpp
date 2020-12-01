@@ -7,8 +7,8 @@
 #include "SNMP/Scanner.h"
 #include "SNMP/Session.h"
 #include "Utility/IPRangeCalculator.h"
+#include <gtk/gtk.h>
 
-#define INPUT_IP 1
 #define DEVELOPMENT_INFORMATION 1
 
 int main() {
