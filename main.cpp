@@ -4,8 +4,8 @@
 #include <vector>
 #include <string>
 #include "Benchmarking/Timer.h"
-#include "Scanner.h"
-#include "Session.h"
+#include "SNMP/Scanner.h"
+#include "SNMP/Session.h"
 #include "Utility/IPRangeCalculator.h"
 
 #define INPUT_IP 1

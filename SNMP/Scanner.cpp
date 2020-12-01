@@ -3,7 +3,7 @@
 #include "Session.h"
 #include <iostream>
 #include <future>
-#include "Utility/IPRangeCalculator.h"
+#include "../Utility/IPRangeCalculator.h"
 
 
 Scanner::Scanner() {
