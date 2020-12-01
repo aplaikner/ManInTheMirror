@@ -7,7 +7,9 @@
 #include "SNMP/Scanner.h"
 #include "SNMP/Session.h"
 #include "Utility/IPRangeCalculator.h"
-#include <gtk/gtk.h>
+#include <gtkmm/application.h>
+
+
 
 #define DEVELOPMENT_INFORMATION 1
 
