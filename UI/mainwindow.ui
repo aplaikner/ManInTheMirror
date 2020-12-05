@@ -14,7 +14,8 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">/*background-color: #663399*/
+   <string notr="true">background-color: white;
+color: black
 </string>
   </property>
   <widget class="QWidget" name="centralwidget">
@@ -28,6 +29,7 @@
        <font>
         <family>Cantarell</family>
         <pointsize>20</pointsize>
+        <underline>false</underline>
        </font>
       </property>
       <property name="styleSheet">
@@ -49,8 +51,8 @@
         <pointsize>16</pointsize>
        </font>
       </property>
-      <property name="currentIndex">
-       <number>1</number>
+      <property name="tabSpacing">
+       <number>6</number>
       </property>
       <widget class="QWidget" name="toolBox_page_settings">
        <property name="geometry">
@@ -85,7 +87,7 @@
              </font>
             </property>
             <property name="currentIndex">
-             <number>1</number>
+             <number>0</number>
             </property>
             <widget class="QWidget" name="toolbox_page_snmp_settings">
              <property name="geometry">
@@ -141,8 +143,8 @@
               <string>Visual-Settings</string>
              </attribute>
              <layout class="QVBoxLayout" name="verticalLayout_6">
-              <item alignment="Qt::AlignTop">
-               <widget class="QCheckBox" name="checkBox_whitemode">
+              <item>
+               <widget class="QRadioButton" name="radioButton_whitemode">
                 <property name="font">
                  <font>
                   <family>Cantarell</family>
@@ -152,10 +154,13 @@
                 <property name="text">
                  <string>Whitemode</string>
                 </property>
+                <property name="checked">
+                 <bool>true</bool>
+                </property>
                </widget>
               </item>
               <item>
-               <widget class="QCheckBox" name="checkBox_darkmode">
+               <widget class="QRadioButton" name="radioButton_darkmode">
                 <property name="font">
                  <font>
                   <family>Cantarell</family>
@@ -168,7 +173,7 @@
                </widget>
               </item>
               <item>
-               <widget class="QCheckBox" name="checkBox_rebeccapurple">
+               <widget class="QRadioButton" name="radioButton_rebeccapurple">
                 <property name="font">
                  <font>
                   <family>Cantarell</family>
@@ -403,9 +408,9 @@
            </spacer>
           </item>
           <item>
-           <widget class="QLabel" name="label_4">
+           <widget class="QLabel" name="label_subnet_slash">
             <property name="enabled">
-             <bool>true</bool>
+             <bool>false</bool>
             </property>
             <property name="font">
              <font>
@@ -432,9 +437,9 @@
            </spacer>
           </item>
           <item>
-           <widget class="QLineEdit" name="lineEdit_5">
+           <widget class="QLineEdit" name="lineEdit_subnet_input">
             <property name="enabled">
-             <bool>true</bool>
+             <bool>false</bool>
             </property>
             <property name="font">
              <font>
@@ -459,9 +464,43 @@
           </item>
          </layout>
         </item>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_8">
+          <item>
+           <widget class="QPushButton" name="pushButton">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Cantarell</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
+            <property name="text">
+             <string>Scan!</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
        </layout>
       </widget>
       <widget class="QWidget" name="toolBox_page_results">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>955</width>
+         <height>334</height>
+        </rect>
+       </property>
        <attribute name="label">
         <string>Results</string>
        </attribute>
