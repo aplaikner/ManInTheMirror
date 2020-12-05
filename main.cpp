@@ -7,7 +7,6 @@
 #include "SNMP/Scanner.h"
 #include "SNMP/Session.h"
 #include "Utility/IPRangeCalculator.h"
-#include <gtkmm/application.h>
 
 
 
