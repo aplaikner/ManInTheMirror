@@ -18,6 +18,13 @@ public:
 
 private slots:
 
+
+    void on_checkBox_darkmode_clicked();
+
+    void on_checkBox_rebeccapurple_clicked();
+
+    void on_checkBox_whitemode_clicked();
+
 private:
     Ui::MainWindow *ui;
 };
