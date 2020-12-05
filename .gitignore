@@ -1,3 +1,6 @@
 # Project exclude paths
 /cmake-build-debug/
 /cmake-build-release/
+/UI/CMakeLists.txt
+/UI/CMakeLists.txt.user
+/UI/.gitignore
