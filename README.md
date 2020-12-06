@@ -6,8 +6,8 @@ The UI is created using Qt5.
 ## Prerequisites
 - `net-snmp`
     - Installation on Arch Linux: `pacman -S net-snmp`
-- `qt5`
-    - Installation on Arch Linux: `pacman -S qt5`
+- `qt5-base`
+    - Installation on Arch Linux: `pacman -S qt5-base`
 
 
 
