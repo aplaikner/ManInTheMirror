@@ -7,6 +7,7 @@
 #include <vector>
 #include <mutex>
 #include <thread>
+#include <QListWidget>
 
 class Session {
     // Holds information about who we're going to be talking to.
@@ -35,7 +36,7 @@ class Session {
     std::vector<const char *> request_strings;
 public:
     Session(std::string host, std::vector<const char*> oids);
-    void start_session();
+    void start_session(QListWidget *pWidget);
 
 };
 

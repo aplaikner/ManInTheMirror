@@ -1,14 +1,15 @@
 
 #include "Session.h"
 #include <iostream>
+#include <QListWidget>
 
 Session::Session(std::string host, std::vector<const char *> oids) : request_strings(oids), ip(host) {
 
 }
 
-//static std::mutex mlock;
+static std::mutex mlock;
 
-void Session::start_session() {
+void Session::start_session(QListWidget *pWidget) {
 
     /*
      * Initialize a "session" that defines who we're going to talk to
@@ -27,7 +28,7 @@ void Session::start_session() {
     // set SNMPv1 community name used for authentication
     session.community = (u_char *) "public";
     session.community_len = strlen(reinterpret_cast<const char *>(session.community));
-    session.timeout = 200000;
+    //session.timeout = 200000;
     //snmp_set_do_debugging(1);
     // Establish the session
     ss = snmp_sess_open(&session);
@@ -68,7 +69,13 @@ void Session::start_session() {
                 //print_variable(vars->name, vars->name_length, vars);
                 char buf[1024];
                 snprint_variable(buf, sizeof(buf), vars->name, vars->name_length, vars);
-                fprintf(stdout, "%s: %s\n", ip.c_str(), buf);
+                //fprintf(stdout, "%s: %s\n", ip.c_str(), buf);
+                std::string message = ip.c_str();
+                message.append(":");
+                message.append(buf);
+                mlock.lock();
+                pWidget->addItem(message.c_str());
+                mlock.unlock();
             }
         } else {
             // FAILURE: print what went wrong!

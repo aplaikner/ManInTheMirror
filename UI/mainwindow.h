@@ -2,6 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "../SNMP/Scanner.h"
+#include <vector>
 
 
 QT_BEGIN_NAMESPACE
@@ -39,6 +41,9 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    Scanner s;
+    std::vector<const char *> oids;
+
 };
 
 #endif // MAINWINDOW_H

@@ -20,15 +20,10 @@ int main(int argc, char *argv[]) {
     std::cout << "Functionality: Get predefined set of information from client running an SNMP agent" << std::endl;
     std::cout << "Tested with SN-NAS\n" << std::endl;
 #endif
-#if SCAN == 1
-    {
-        Timer t;
-        Scanner s;
-        s.scan();
-    }
-#endif
     QApplication a(argc, argv);
     MainWindow w;
     w.show();
     return a.exec();
 }
+
+// TODO: Implement changing community string in UI

@@ -1,6 +1,10 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
 #include <iostream>
+#include "../SNMP/Scanner.h"
+#include "../Utility/IPRangeCalculator.h"
+#include <string>
+#include <vector>
 
 MainWindow::MainWindow(QWidget *parent)
         : QMainWindow(parent), ui(new Ui::MainWindow) {
@@ -64,5 +68,19 @@ void MainWindow::on_lineEdit_oid_input_returnPressed()
 
 void MainWindow::on_pushButton_scan_clicked()
 {
-    // here's the fun
+    ui->listWidget_results->clear();
+    if(ui->checkBox_scan_network_range->isChecked()){
+        s.setHosts(IPRangeCalculator::calculate_ips(ui->lineEdit_ip_1->text().toInt(), ui->lineEdit_ip_2->text().toInt(), ui->lineEdit_ip_3->text().toInt(), ui->lineEdit_ip_4->text().toInt(), ui->lineEdit_subnet_input->text().toInt()));
+        s.removeFirstLastHost();
+    }else{
+        s.setHosts(IPRangeCalculator::calculate_ips(ui->lineEdit_ip_1->text().toInt(), ui->lineEdit_ip_2->text().toInt(), ui->lineEdit_ip_3->text().toInt(), ui->lineEdit_ip_4->text().toInt(), 32));
+    }
+    for (int row = 0; row < ui->listWidget_oids->count(); ++row)
+    {
+        oids.push_back(strdup(ui->listWidget_oids->item(row)->text().toStdString().c_str()));
+    }
+    s.setOids(oids);
+    oids.clear();
+
+    s.scan(ui->listWidget_results);
 }
