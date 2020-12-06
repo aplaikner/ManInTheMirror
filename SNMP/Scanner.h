@@ -25,7 +25,7 @@ public:
 
 public:
     Scanner();
-    void scan(QListWidget *pWidget);
+    void scan(QListWidget *results_list, u_char *community);
 };
 
 

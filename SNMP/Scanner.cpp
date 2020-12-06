@@ -24,7 +24,7 @@ Scanner::Scanner() {
     //oids.emplace_back("ipAddrTable");
 }
 
-void Scanner::scan(QListWidget *pWidget) {
+void Scanner::scan(QListWidget *results_list, u_char *community) {
     std::vector<std::thread> threads;
     std::vector<Session> sessions;
     for (const auto &host : hosts) {
@@ -33,7 +33,7 @@ void Scanner::scan(QListWidget *pWidget) {
     threads.reserve(sessions.size());
     for (const auto &session : sessions) {
         //session.start_session();
-        threads.emplace_back(std::thread(&Session::start_session, session, pWidget));
+        threads.emplace_back(std::thread(&Session::start_session, session, results_list, community));
     }
 
     for (auto &t : threads) {

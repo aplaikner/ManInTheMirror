@@ -39,11 +39,13 @@ private slots:
 
     void on_pushButton_scan_clicked();
 
+    void on_checkBox_community_clicked();
+
 private:
     Ui::MainWindow *ui;
     Scanner s;
     std::vector<const char *> oids;
-
+    u_char *community;
 };
 
 #endif // MAINWINDOW_H

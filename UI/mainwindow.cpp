@@ -2,8 +2,8 @@
 #include "./ui_mainwindow.h"
 #include <iostream>
 #include "../SNMP/Scanner.h"
-#include "../Utility/IPRangeCalculator.h"
 #include <string>
+#include "../Utility/IPRangeCalculator.h"
 #include <vector>
 
 MainWindow::MainWindow(QWidget *parent)
@@ -81,6 +81,18 @@ void MainWindow::on_pushButton_scan_clicked()
     }
     s.setOids(oids);
     oids.clear();
+    if(ui->checkBox_community->isChecked() && ui->lineEdit_community->text()!= ""){
+        community = (u_char *)ui->lineEdit_community->text().toStdString().c_str();
+    }else{
+        community = (u_char *)"public";
+    }
+    s.scan(ui->listWidget_results, community);
+}
 
-    s.scan(ui->listWidget_results);
+void MainWindow::on_checkBox_community_clicked()
+{
+    ui->lineEdit_community->setEnabled(ui->checkBox_community->isChecked());
+    if(!ui->checkBox_community->isChecked()){
+        ui->lineEdit_community->clear();
+    }
 }

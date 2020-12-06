@@ -36,7 +36,7 @@ class Session {
     std::vector<const char *> request_strings;
 public:
     Session(std::string host, std::vector<const char*> oids);
-    void start_session(QListWidget *pWidget);
+    void start_session(QListWidget *results_list, u_char *community);
 
 };
 

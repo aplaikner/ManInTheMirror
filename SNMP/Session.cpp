@@ -9,7 +9,7 @@ Session::Session(std::string host, std::vector<const char *> oids) : request_str
 
 static std::mutex mlock;
 
-void Session::start_session(QListWidget *pWidget) {
+void Session::start_session(QListWidget *results_list, u_char *community) {
 
     /*
      * Initialize a "session" that defines who we're going to talk to
@@ -26,7 +26,8 @@ void Session::start_session(QListWidget *pWidget) {
     session.version = SNMP_VERSION_1;
 
     // set SNMPv1 community name used for authentication
-    session.community = (u_char *) "public";
+    session.community = community;
+    std::cout << community << std::endl;
     session.community_len = strlen(reinterpret_cast<const char *>(session.community));
     //session.timeout = 200000;
     //snmp_set_do_debugging(1);
@@ -74,7 +75,7 @@ void Session::start_session(QListWidget *pWidget) {
                 message.append(":");
                 message.append(buf);
                 mlock.lock();
-                pWidget->addItem(message.c_str());
+                results_list->addItem(message.c_str());
                 mlock.unlock();
             }
         } else {

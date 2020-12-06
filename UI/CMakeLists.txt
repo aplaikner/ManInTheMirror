@@ -40,7 +40,13 @@ else()
     mainwindow.cpp
     mainwindow.h
     mainwindow.ui
+    ../SNMP/Scanner.h
+    ../SNMP/Scanner.cpp
+    ../SNMP/Session.h
+    ../SNMP/Session.cpp
+    ../Utility/IPRangeCalculator.h
+    ../Utility/IPRangeCalculator.cpp
   )
 endif()
-
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread -lnetsnmp")
 target_link_libraries(UI PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
