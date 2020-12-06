@@ -23,7 +23,7 @@ color: black;
     <string notr="true"/>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
-    <item alignment="Qt::AlignHCenter|Qt::AlignTop">
+    <item>
      <widget class="QLabel" name="label_main_header">
       <property name="font">
        <font>
@@ -52,7 +52,7 @@ color: black;
        </font>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>2</number>
       </property>
       <property name="tabSpacing">
        <number>6</number>
@@ -90,15 +90,15 @@ color: black;
              </font>
             </property>
             <property name="currentIndex">
-             <number>1</number>
+             <number>0</number>
             </property>
             <widget class="QWidget" name="toolbox_page_snmp_settings">
              <property name="geometry">
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>184</width>
-               <height>50</height>
+               <width>935</width>
+               <height>238</height>
               </rect>
              </property>
              <attribute name="label">
@@ -566,6 +566,11 @@ color: black;
        <attribute name="label">
         <string>Results</string>
        </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_9">
+        <item>
+         <widget class="QListWidget" name="listWidget_results"/>
+        </item>
+       </layout>
       </widget>
      </widget>
     </item>
