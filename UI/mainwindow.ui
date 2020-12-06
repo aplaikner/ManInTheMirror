@@ -15,7 +15,7 @@
   </property>
   <property name="styleSheet">
    <string notr="true">background-color: white;
-color: black
+color: black;
 </string>
   </property>
   <widget class="QWidget" name="centralwidget">
@@ -50,6 +50,9 @@ color: black
         <family>Cantarell</family>
         <pointsize>16</pointsize>
        </font>
+      </property>
+      <property name="currentIndex">
+       <number>1</number>
       </property>
       <property name="tabSpacing">
        <number>6</number>
@@ -87,15 +90,15 @@ color: black
              </font>
             </property>
             <property name="currentIndex">
-             <number>0</number>
+             <number>1</number>
             </property>
             <widget class="QWidget" name="toolbox_page_snmp_settings">
              <property name="geometry">
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>935</width>
-               <height>238</height>
+               <width>184</width>
+               <height>50</height>
               </rect>
              </property>
              <attribute name="label">
@@ -220,6 +223,59 @@ color: black
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_7">
         <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <item>
+           <widget class="QLineEdit" name="lineEdit_oid_input">
+            <property name="font">
+             <font>
+              <family>Cantarell</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
+           </widget>
+          </item>
+          <item alignment="Qt::AlignRight">
+           <widget class="QDialogButtonBox" name="buttonBox_oid_input">
+            <property name="font">
+             <font>
+              <family>Cantarell</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="standardButtons">
+             <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QListWidget" name="listWidget_oids">
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>110</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>Cantarell</family>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_remove_oid">
+          <property name="text">
+           <string>Remove OID</string>
+          </property>
+         </widget>
+        </item>
+        <item>
          <layout class="QHBoxLayout" name="horizontalLayout_5">
           <item>
            <spacer name="horizontalSpacer_9">
@@ -241,6 +297,9 @@ color: black
               <family>Cantarell</family>
               <pointsize>12</pointsize>
              </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true"/>
             </property>
            </widget>
           </item>
@@ -447,6 +506,9 @@ color: black
               <pointsize>12</pointsize>
              </font>
             </property>
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
            </widget>
           </item>
           <item>
@@ -467,7 +529,7 @@ color: black
         <item>
          <layout class="QVBoxLayout" name="verticalLayout_8">
           <item>
-           <widget class="QPushButton" name="pushButton">
+           <widget class="QPushButton" name="pushButton_scan">
             <property name="minimumSize">
              <size>
               <width>0</width>

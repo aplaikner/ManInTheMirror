@@ -27,6 +27,16 @@ private slots:
 
     void on_radioButton_rebeccapurple_clicked();
 
+    void on_buttonBox_oid_input_accepted();
+
+    void on_buttonBox_oid_input_rejected();
+
+    void on_pushButton_remove_oid_clicked();
+
+    void on_lineEdit_oid_input_returnPressed();
+
+    void on_pushButton_scan_clicked();
+
 private:
     Ui::MainWindow *ui;
 };
