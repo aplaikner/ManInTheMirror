@@ -138,8 +138,8 @@ color: black;
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>196</width>
-               <height>114</height>
+               <width>935</width>
+               <height>238</height>
               </rect>
              </property>
              <attribute name="label">
@@ -277,19 +277,6 @@ color: black;
         </item>
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_5">
-          <item>
-           <spacer name="horizontalSpacer_9">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
           <item>
            <widget class="QLineEdit" name="lineEdit_ip_1">
             <property name="font">
@@ -510,19 +497,6 @@ color: black;
              <string notr="true"/>
             </property>
            </widget>
-          </item>
-          <item>
-           <spacer name="horizontalSpacer_10">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
           </item>
          </layout>
         </item>
