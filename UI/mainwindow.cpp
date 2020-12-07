@@ -84,8 +84,8 @@ void MainWindow::on_pushButton_scan_clicked()
         oids.emplace_back(strdup(ui->listWidget_oids->item(row)->text().toStdString().c_str()));
     }
     s->setOids(oids);
-    for(auto item : oids){
-        delete item;
+    for(auto item : this->oids){
+        free((void *) item);
     }
     oids.clear();
     if(ui->checkBox_community->isChecked() && ui->lineEdit_community->text()!= ""){

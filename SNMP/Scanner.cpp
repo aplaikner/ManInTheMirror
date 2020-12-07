@@ -41,7 +41,7 @@ void Scanner::removeFirstLastHost() {
 
 void Scanner::setOids(const std::vector<const char *> &oids) {
     for (auto item : this->oids) {
-        delete item;
+        free((void *) item);
     }
     this->oids.clear();
 
@@ -56,7 +56,7 @@ const std::vector<const char *> &Scanner::getOids() const {
 
 Scanner::~Scanner() {
     for (auto item : oids) {
-        delete item;
+        free((void *) item);
     }
     oids.clear();
 }
