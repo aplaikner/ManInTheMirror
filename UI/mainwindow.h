@@ -43,7 +43,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    Scanner s;
+    Scanner *s = new Scanner;
     std::vector<const char *> oids;
     u_char *community;
 };

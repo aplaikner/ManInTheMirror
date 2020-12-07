@@ -1,7 +1,6 @@
 
 #include "Scanner.h"
 #include "Session.h"
-#include <iostream>
 #include <future>
 #include <QListWidget>
 #include "../Utility/IPRangeCalculator.h"
@@ -10,18 +9,6 @@
 Scanner::Scanner() {
     // initialize SNMP library
     init_snmp("snmpapp");
-
-    //oids.emplace_back("system.sysDescr");
-    //oids.emplace_back("system.sysObjectID");
-    //oids.emplace_back("system.sysUpTime");
-    //oids.emplace_back("system.sysContact");
-    //oids.emplace_back("system.sysName");
-    //oids.emplace_back("system.sysLocation");
-    //oids.emplace_back("ip.ipForwarding");
-    //oids.emplace_back("ip.ipDefaultTTL");
-    //oids.emplace_back("host.hrStorage");
-    //oids.emplace_back("HostResources");
-    //oids.emplace_back("ipAddrTable");
 }
 
 void Scanner::scan(QListWidget *results_list, u_char *community) {
@@ -32,10 +19,8 @@ void Scanner::scan(QListWidget *results_list, u_char *community) {
     }
     threads.reserve(sessions.size());
     for (const auto &session : sessions) {
-        //session.start_session();
         threads.emplace_back(std::thread(&Session::start_session, session, results_list, community));
     }
-
     for (auto &t : threads) {
         t.detach();
     }
@@ -55,9 +40,23 @@ void Scanner::removeFirstLastHost() {
 }
 
 void Scanner::setOids(const std::vector<const char *> &oids) {
-    Scanner::oids = oids;
+    for (auto item : this->oids) {
+        delete item;
+    }
+    this->oids.clear();
+
+    for (auto oid : oids) {
+        this->oids.push_back(strdup(oid));
+    }
 }
 
 const std::vector<const char *> &Scanner::getOids() const {
     return oids;
+}
+
+Scanner::~Scanner() {
+    for (auto item : oids) {
+        delete item;
+    }
+    oids.clear();
 }

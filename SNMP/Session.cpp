@@ -27,7 +27,7 @@ void Session::start_session(QListWidget *results_list, u_char *community) {
 
     // set SNMPv1 community name used for authentication
     session.community = community;
-    std::cout << community << std::endl;
+    //std::cout << community << std::endl;
     session.community_len = strlen(reinterpret_cast<const char *>(session.community));
     //session.timeout = 200000;
     //snmp_set_do_debugging(1);
