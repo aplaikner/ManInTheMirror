@@ -10,6 +10,12 @@ MainWindow::MainWindow(QWidget *parent)
         : QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
 
+    ui->listWidget_oids->addItem("sysDescr");
+    ui->listWidget_oids->addItem("hrStorage");
+    ui->listWidget_oids->addItem("sysUpTime");
+    ui->listWidget_oids->addItem("sysContact");
+    ui->listWidget_oids->addItem("sysName");
+    ui->listWidget_oids->addItem("sysLocation");
 }
 
 MainWindow::~MainWindow() {
