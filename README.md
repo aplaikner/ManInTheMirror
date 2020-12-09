@@ -16,6 +16,7 @@ To execute the program run the binary that is packaged in the latest release or 
 - **Scan network range** with multiple OIDs
 - Some **default OIDs are already loaded** into the UI
 - **Change community string** in the UI
+- All scanning is done in an **asynchronous** manner
   
 # Default settings
 - Default community string is `public`
