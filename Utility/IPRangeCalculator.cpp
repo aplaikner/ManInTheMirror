@@ -8,7 +8,7 @@ std::vector<std::string> IPRangeCalculator::calculate_ips(int x, int y, int z, i
     unsigned network = address / tail * tail;
     unsigned broadcast = (address / tail + 1) * tail - 1;
     {
-        ips.reserve(16777216);
+        ips.reserve(4096);
         for (unsigned add = network; add <= broadcast; ++add) {
             print(add, ips);
         }
