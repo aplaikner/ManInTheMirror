@@ -14,11 +14,13 @@
         * [Scan single host](#scan-single-host)
         * [Scan network range](#scan-network-range)
         * [Results](#results)
+        * [Traps](#traps)
 
 # Introduction
 
 ManInTheMirror is an **SNMP network scanning tool** written in **C++** using the [**Net-SNMP
-library**](http://www.net-snmp.org).<br>
+library**](http://www.net-snmp.org). MITM is also able to listen for incoming trap messages through sockets and decodes
+the message using [**OpenSSL with asn1parse**](https://www.openssl.org).<br>
 The UI is created using [**Qt5**](https://www.qt.io).
 
 # Setup
@@ -26,9 +28,17 @@ The UI is created using [**Qt5**](https://www.qt.io).
 ## Prerequisites
 
 - `net-snmp`
-    - Installation on Arch Linux: `pacman -S net-snmp`
+    - Installation on Arch Linux: `sudo pacman -S net-snmp`
 - `qt5-base`
-    - Installation on Arch Linux: `pacman -S qt5-base`
+    - Installation on Arch Linux: `sudo pacman -S qt5-base`
+- `tr`
+    - Should **already be preinstalled** on Linux.
+- `xxd`
+    - Should **already be preinstalled** on Linux.
+    - Installation on Arch Linux: `sudo pacman -S xxd`
+- `openssl`
+    - Should **already be preinstalled** on Linux.
+    - Installation on Arch Linux: `sudo pacman -S openssl`
 
 ## Execution
 
@@ -38,6 +48,7 @@ To execute the program run the binary that is packaged in the latest release or 
 
 - Default community string is `public`
 - Requests are sent using `GETNEXT`, so watch out when inputting OIDs
+- Traps are received on **port 162**, therefore the program **must be run with sudo privileges**
 
 # Features & Roadmap
 
@@ -48,10 +59,12 @@ To execute the program run the binary that is packaged in the latest release or 
 - Some **default OIDs are already loaded** into the UI
 - **Change community string** in the UI
 - All scanning is done in an **asynchronous** manner
+- Receive and output **traps**
+- Trap listener starts **listening on program startup**
+- Fully resizable window
 
 ## Planned
 
-- **Trap listener**
 - **Rework UI**
 
 ## UI
@@ -75,4 +88,8 @@ To execute the program run the binary that is packaged in the latest release or 
 ### Results
 
 ![Results](Resources/ui5.gif)
+
+### Traps
+
+![Traps](Resources/ui6.gif)
 
