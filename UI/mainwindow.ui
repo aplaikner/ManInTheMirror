@@ -51,8 +51,11 @@ color: black;
         <pointsize>16</pointsize>
        </font>
       </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>3</number>
       </property>
       <property name="tabSpacing">
        <number>6</number>
@@ -63,7 +66,7 @@ color: black;
          <x>0</x>
          <y>0</y>
          <width>955</width>
-         <height>334</height>
+         <height>294</height>
         </rect>
        </property>
        <property name="font">
@@ -98,7 +101,7 @@ color: black;
                <x>0</x>
                <y>0</y>
                <width>935</width>
-               <height>238</height>
+               <height>198</height>
               </rect>
              </property>
              <attribute name="label">
@@ -179,8 +182,8 @@ color: black;
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>935</width>
-               <height>238</height>
+               <width>196</width>
+               <height>114</height>
               </rect>
              </property>
              <attribute name="label">
@@ -256,7 +259,7 @@ color: black;
          <x>0</x>
          <y>0</y>
          <width>955</width>
-         <height>334</height>
+         <height>294</height>
         </rect>
        </property>
        <attribute name="label">
@@ -575,7 +578,7 @@ color: black;
          <x>0</x>
          <y>0</y>
          <width>955</width>
-         <height>334</height>
+         <height>294</height>
         </rect>
        </property>
        <attribute name="label">
@@ -589,6 +592,38 @@ color: black;
             <family>Cantarell</family>
             <pointsize>12</pointsize>
            </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="toolBox_page_traps">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>955</width>
+         <height>294</height>
+        </rect>
+       </property>
+       <attribute name="label">
+        <string>Traps</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_3">
+        <item>
+         <widget class="QListWidget" name="listWidget_traps">
+          <property name="font">
+           <font>
+            <family>Cantarell</family>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QListWidget:item{border-bottom: 2px solid black;}
+QListWidget::item:selected {background-color: white; color: black}</string>
           </property>
          </widget>
         </item>

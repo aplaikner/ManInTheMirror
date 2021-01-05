@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
-#include <iostream>
-#include "../SNMP/Scanner.h"
+#include "../SNMP/TrapListener.h"
+#include <thread>
 #include <string>
 #include "../Utility/IPRangeCalculator.h"
 #include <vector>
@@ -16,6 +16,9 @@ MainWindow::MainWindow(QWidget *parent)
     ui->listWidget_oids->addItem("sysContact");
     ui->listWidget_oids->addItem("sysName");
     ui->listWidget_oids->addItem("sysLocation");
+
+    TrapListener t(ui->listWidget_traps);
+    std::thread(&TrapListener::listen, t).detach();
 }
 
 MainWindow::~MainWindow() {

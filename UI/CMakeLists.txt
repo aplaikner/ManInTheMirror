@@ -45,7 +45,9 @@ else()
     ../SNMP/Session.h
     ../SNMP/Session.cpp
     ../Utility/IPRangeCalculator.h
-    ../Utility/IPRangeCalculator.cpp
+    ../Utility/IPRangeCalculator.cpp 
+    ../SNMP/TrapListener.h
+    ../SNMP/TrapListener.cpp
   )
 endif()
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread -lnetsnmp")
