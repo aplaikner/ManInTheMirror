@@ -38,7 +38,7 @@ void Scanner::setHosts(const std::vector<std::string> &hosts) {
     Scanner::hosts = hosts;
 }
 
-// getter for hosts
+// get hosts
 const std::vector<std::string> &Scanner::getHosts() const {
     return hosts;
 }
@@ -64,7 +64,7 @@ void Scanner::setOids(const std::vector<const char *> &oids) {
     }
 }
 
-// getter for OIDs
+// get OIDs
 const std::vector<const char *> &Scanner::getOids() const {
     return oids;
 }
