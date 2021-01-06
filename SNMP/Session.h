@@ -32,7 +32,7 @@ class Session {
     // holds clients IP
     std::string ip;
 
-    // vector to store OIDs that are requested later on
+    // stores OIDs that are requested later on
     std::vector<const char *> request_strings;
 public:
     Session(std::string host, std::vector<const char*> oids);
