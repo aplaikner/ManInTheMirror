@@ -8,31 +8,31 @@
 
 
 class Scanner {
-    // vector to store OIDs later used for scanning
+    // stores OIDs later used for scanning
     std::vector<const char *> oids;
 
 public:
-    // get OIDs
+    // gets OIDs
     const std::vector<const char *> &getOids() const;
 
 public:
-    // set OIDs that are requested later on when scanning
+    // sets OIDs that are requested later on when scanning
     void setOids(const std::vector<const char *> &oids);
 
 private:
-    // vector to store each host that is scanned later
+    // stores each host that is scanned later
     std::vector<std::string> hosts;
 
 public:
-    // get for hosts
+    // gets hosts
     const std::vector<std::string> &getHosts() const;
 
 public:
-    // set hosts that are to be scanned later on
+    // sets hosts that are to be scanned later on
     void setHosts(const std::vector<std::string> &hosts);
 
 public:
-    // remove netid and broadcast ip from hosts because they don't need to be scanned
+    // removes netid and broadcast ip from hosts because they don't need to be scanned
     void removeFirstLastHost();
 
 public:
@@ -40,7 +40,7 @@ public:
 
     ~Scanner();
 
-    // set up threads and sessions so that an IP or subnet can be scanned
+    // sets up threads and sessions so that an IP or subnet can be scanned
     void scan(QListWidget *results_list, u_char *community);
 };
 
