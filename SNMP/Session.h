@@ -10,29 +10,29 @@
 #include <QListWidget>
 
 class Session {
-    // Holds information about who we're going to be talking to.
-    // One object will be filled with information, the other is a pointer returned by the library
+    // holds information about who we're going to be talking to.
+    // one object will be filled with information, the other is a pointer returned by the library
     struct snmp_session session;
     void *ss;
 
-    // Holds information we're going to send to the remote host.
-    // The second one contains information they are going to send back
+    // holds information we're going to send to the remote host.
     struct snmp_pdu *pdu;
+    // contains information host is going to send back
     netsnmp_pdu *response;
 
-    // This will hold the variables we want to manipulate via SNMP
+    // holds the variables we want to manipulate via SNMP
     struct variable_list *vars;
 
-    // AN OID is going to hold the location of the information which we want to retrieve
+    //  anOID holds the location of the information which we want to retrieve
     oid anOID[MAX_OID_LEN];
     size_t anOID_len = MAX_OID_LEN;
 
     int status;
 
-    // Points to IP of Client
+    // holds clients IP
     std::string ip;
 
-    // Vector with OIDs
+    // vector to store OIDs that are requested later on
     std::vector<const char *> request_strings;
 public:
     Session(std::string host, std::vector<const char*> oids);
