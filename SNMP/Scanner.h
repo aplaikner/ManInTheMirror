@@ -32,7 +32,7 @@ public:
     void setHosts(const std::vector<std::string> &hosts);
 
 public:
-    // removes netid and broadcast ip from hosts because they don't need to be scanned
+    // removes netid and broadcast IP from hosts because they don't need to be scanned
     void removeFirstLastHost();
 
 public:
