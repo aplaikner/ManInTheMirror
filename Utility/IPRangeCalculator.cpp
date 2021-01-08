@@ -1,7 +1,7 @@
 
 #include "IPRangeCalculator.h"
 
-std::vector<std::string> IPRangeCalculator::calculate_ips(int x, int y, int z, int w, int subnet) {
+std::vector<std::string> IPRangeCalculator::calculateIPs(int x, int y, int z, int w, int subnet) {
     std::vector<std::string> ips;
     unsigned address = (1 << 24) * x + (1 << 16) * y + (1 << 8) * z + w;
     unsigned tail = 1 << (32 - subnet);
@@ -10,13 +10,13 @@ std::vector<std::string> IPRangeCalculator::calculate_ips(int x, int y, int z, i
     {
         ips.reserve(4096);
         for (unsigned add = network; add <= broadcast; ++add) {
-            print(add, ips);
+            calcToIP(add, ips);
         }
     }
     return ips;
 }
 
-void IPRangeCalculator::print(unsigned int add, std::vector<std::string> &v) {
+void IPRangeCalculator::calcToIP(unsigned int add, std::vector<std::string> &v) {
     auto octet = (1 << 8);
     unsigned w = add % octet;
     add /= octet;

@@ -7,9 +7,9 @@
 
 class IPRangeCalculator {
 public:
-    static std::vector<std::string> calculate_ips(int a, int b, int c, int d, int subnet);
+    static std::vector<std::string> calculateIPs(int a, int b, int c, int d, int subnet);
 private:
-    static void print(unsigned add, std::vector<std::string> &v);
+    static void calcToIP(unsigned add, std::vector<std::string> &v);
 };
 
 
