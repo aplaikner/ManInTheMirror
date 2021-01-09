@@ -11,7 +11,7 @@
 
 // defines port for sever to listen for traps
 #define PORT 162
-// sets receivedData size for traps
+// sets buffer size for traps
 #define BUFFER 1024
 
 #include <QListWidget>
