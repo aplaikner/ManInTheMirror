@@ -38,11 +38,11 @@ void TrapListener::listen() {
         }
         std::string address = inet_ntoa(address_client.sin_addr);
         std::string command = "echo " + trapData + " | tr -d ' '  | xxd -r -p | openssl asn1parse -inform DER -i";
-        writeToUI(executeDecodingCommand(command.c_str(), address));
+        writeToUI(decodeData(command.c_str(), address));
     }
 }
 
-std::string TrapListener::executeDecodingCommand(const char *cmd, std::string &address) {
+std::string TrapListener::decodeData(const char *cmd, std::string &address) {
     FILE *commandPipe = popen(cmd, "r");
     if (!commandPipe) return "ERROR";
     char localBuffer[5000];
