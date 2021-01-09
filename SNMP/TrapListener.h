@@ -11,7 +11,7 @@
 
 // defines port for sever to listen for traps
 #define PORT 162
-// sets buffer size for traps
+// sets receivedData size for traps
 #define BUFFER 1024
 
 #include <QListWidget>
@@ -20,17 +20,17 @@
 class TrapListener {
     int doListen = true;
     // sets variable for server running on socket
-    int socket_server;
+    int socketServer;
     // sets buffer where trap data is stored
-    char buffer[BUFFER]{};
+    char receivedData[BUFFER]{};
     // sets variables for server and client addresses
-    sockaddr_in address_server{}, address_client{};
+    sockaddr_in addressServer{}, addressClient{};
 private:
     // decodes trap data to human readable form
-    std::string decodeData(const char *cmd, std::string &address);
+    std::string decodeData(const char *command, std::string &address);
 
     // points to UI list where data is to be shown
-    QListWidget *trap_results_list;
+    QListWidget *trapResultsList;
 
     // writes data to list in UI
     void writeToUI(const std::string &trap_result);
