@@ -7,9 +7,11 @@
 
 class IPRangeCalculator {
 public:
-    static std::vector<std::string> calculate_ips(int a, int b, int c, int d, int subnet);
+    // gets IP address and subnet and shifts it bitwise to then convert it to an unsigned integer and calculate IPs in range
+    static std::vector<std::string> calculateIPs(int a, int b, int c, int d, int subnet);
 private:
-    static void print(unsigned add, std::vector<std::string> &v);
+    // converts previously calculated unsigned integer to actual IP address
+    static void convertToIP(unsigned add, std::vector<std::string> &v);
 };
 
 
