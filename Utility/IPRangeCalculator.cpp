@@ -19,7 +19,7 @@ std::vector<std::string> IPRangeCalculator::calculateIPs(int x, int y, int z, in
         // sets address to first address as unsigned integer and counts up until the broadcast address as unsigned integer is reached
         for (unsigned add = network; add <= broadcast; add++) {
             // calls function that converts unsigned integer number to actual IP string
-            calcToIP(add, ips);
+            convertToIP(add, ips);
         }
     }
     // returns vector with IPs to calling function
@@ -27,7 +27,7 @@ std::vector<std::string> IPRangeCalculator::calculateIPs(int x, int y, int z, in
 }
 
 // converts previously calculated unsigned integer to actual IP address
-void IPRangeCalculator::calcToIP(unsigned int add, std::vector<std::string> &v) {
+void IPRangeCalculator::convertToIP(unsigned int add, std::vector<std::string> &v) {
     // shifts bit by 8 places to get an octet
     auto octet = (1 << 8);
     // calculates least significant part of IP by doing modulo operation with given unsigned int and octet

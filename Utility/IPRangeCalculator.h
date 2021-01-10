@@ -11,7 +11,7 @@ public:
     static std::vector<std::string> calculateIPs(int a, int b, int c, int d, int subnet);
 private:
     // converts previously calculated unsigned integer to actual IP address
-    static void calcToIP(unsigned add, std::vector<std::string> &v);
+    static void convertToIP(unsigned add, std::vector<std::string> &v);
 };
 
 
