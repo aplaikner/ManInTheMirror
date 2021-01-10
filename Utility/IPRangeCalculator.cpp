@@ -9,7 +9,7 @@ std::vector<std::string> IPRangeCalculator::calculateIPs(int x, int y, int z, in
     unsigned broadcast = (address / tail + 1) * tail - 1;
     {
         ips.reserve(4096);
-        for (unsigned add = network; add <= broadcast; ++add) {
+        for (unsigned add = network; add <= broadcast; add++) {
             calcToIP(add, ips);
         }
     }
