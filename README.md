@@ -49,6 +49,7 @@ To execute the program run the binary that is packaged in the latest release or 
 - Default community string is `public`
 - Requests are sent using `GETNEXT`, so watch out when inputting OIDs
 - Traps are received on **port 162**, therefore the program **must be run with sudo privileges**
+- Trap messages that are received as **strings are printed normally as strings**. However trap messages that are received as, for example, **integers**, are **printed as hex numbers**.
 
 # Features & Roadmap
 
