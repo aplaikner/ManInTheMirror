@@ -25,7 +25,7 @@ void Scanner::scan(QListWidget *results_list, u_char *community) {
     threads.reserve(sessions.size());
     for (const auto &session : sessions) {
         // starts every thread and gives it a session to work on
-        threads.emplace_back(std::thread(&Session::start_session, session, results_list, community));
+        threads.emplace_back(std::thread(&Session::startSession, session, results_list, community));
     }
     for (auto &t : threads) {
         // detaches each thread so it can work independently
