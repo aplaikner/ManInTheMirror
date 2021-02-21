@@ -19,13 +19,13 @@ void Scanner::scan(QListWidget *results_list, u_char *community) {
     std::vector<Session> sessions;
     for (const auto &host : hosts) {
         // creates sessions in vector
-        sessions.emplace_back(Session(host, oids));
+        sessions.emplace_back(host, oids);
     }
     // reserves space in threads vector --> less resizing(copying)
     threads.reserve(sessions.size());
     for (const auto &session : sessions) {
         // starts every thread and gives it a session to work on
-        threads.emplace_back(std::thread(&Session::startSession, session, results_list, community));
+        threads.emplace_back(&Session::startSession, session, results_list, community);
     }
     for (auto &t : threads) {
         // detaches each thread so it can work independently
