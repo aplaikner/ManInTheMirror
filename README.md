@@ -4,6 +4,7 @@
     * [Prerequisites](#prerequisites)
     * [Execution](#execution)
     * [Default settings](#default-settings)
+    * [Load custom MIBs](#load-custom-mibs)
 
 3. [Features & Roadmap](#features--roadmap)
     * [Current features](#current-features)
@@ -50,6 +51,13 @@ To execute the program run the binary that is packaged in the latest release or 
 - Requests are sent using `GETNEXT`, so watch out when inputting OIDs
 - Traps are received on **port 162**, therefore the program **must be run with sudo privileges**
 - Trap messages that are received as **strings are printed normally as strings**. However trap messages that are received as, for example, **integers**, are **printed as hex numbers**.
+
+## Load custom MIBs
+
+The net-snmp installation comes with a default set of MIBs. Adding custom MIB files can be done by copying them to the respective MIB directory and then loading them.<br>
+To find out the MIB directory path, execute following command: <br>
+`net-snmp-config --default-mibdirs` <br>
+For more information on how to add and load new MIBs, consult [**Net-SNMPs tutorial on how to load custom MIBs**](http://net-snmp.sourceforge.net/wiki/index.php/TUT:Using_and_loading_MIBS).
 
 # Features & Roadmap
 
